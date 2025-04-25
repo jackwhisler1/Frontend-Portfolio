@@ -147,7 +147,7 @@ body {
 .share-popup {
   position: absolute;
   bottom: 50px;
-  left: 93%;
+  left: 95%;
   transform: translateX(-50%);
   background-color: hsl(217, 19%, 35%);
   padding: 1rem 2rem;
