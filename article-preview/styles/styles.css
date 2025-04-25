@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,11 +14,11 @@ body {
   background-color: hsl(210, 46%, 95%);
   min-height: 100vh;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 13px;
   padding: 1.5rem;
+  font-size: 13px;
 }
 
 /* Card container */
@@ -28,9 +26,8 @@ body {
   display: flex;
   max-width: 730px;
   width: 100%;
-  height: auto; 
+  background: white;
   border-radius: 10px;
-  background-color: white;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
   /* overflow: hidden; */
   margin-bottom: 2rem;
@@ -46,50 +43,48 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left; 
+  object-position: left;
 }
 
-/* Text content container */
+/* Text section */
 #text-container {
   flex: 1;
-  padding: 2.5rem 2.5rem 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
 }
 
-/* Article heading */
 .text-title {
   color: hsl(217, 19%, 35%);
   font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.4;
   margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
-/* Article paragraph */
 .text-body {
   color: hsl(214, 17%, 51%);
-  line-height: 1.6;
   margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-/* Author info container */
+/* Author container */
 .author-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   width: 100%;
-  margin-top: auto;
 }
 
 .author-info {
   display: flex;
   align-items: center;
+  width: max-content;
 }
 
-/* Avatar styling */
 #avatar-container {
   width: 40px;
   height: 40px;
@@ -103,16 +98,15 @@ body {
   object-fit: cover;
 }
 
-/* Author text */
 .author-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: max-content;
 }
 
 .author-name {
-  color: hsl(217, 19%, 35%);
   font-weight: 700;
+  color: hsl(217, 19%, 35%);
   margin-bottom: 0.2rem;
 }
 
@@ -120,7 +114,15 @@ body {
   color: hsl(212, 23%, 69%);
 }
 
-/* Share button - exact size and positioning */
+.share-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+}
+
+/* Share button */
 .share-button {
   width: 32px;
   height: 32px;
@@ -130,42 +132,35 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .share-button:hover {
-  background-color: hsl(214, 17%, 51%); 
-}
-
-.share-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: hsl(214, 17%, 51%);
 }
 
 .share-button:hover img {
-  filter: brightness(0) invert(1); /* Changes icon to white on hover */
+  filter: brightness(0) invert(1);
 }
 
-/* Share popup (initially hidden) */
+/* Share popup */
 .share-popup {
   position: absolute;
-  bottom: 120%; /* or top: auto, adjust as needed */
-  left: 50%;
+  bottom: 50px;
+  left: 93%;
   transform: translateX(-50%);
   background-color: hsl(217, 19%, 35%);
   padding: 1rem 2rem;
   border-radius: 10px;
   display: none;
   align-items: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  gap: 1rem;
   z-index: 10;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-
 .share-popup::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;
@@ -175,11 +170,11 @@ body {
   border-color: hsl(217, 19%, 35%) transparent transparent transparent;
 }
 
-
 .share-popup span {
   color: hsl(212, 23%, 69%);
   text-transform: uppercase;
   letter-spacing: 5px;
+  font-size: 11px;
   margin-right: 1rem;
 }
 
@@ -188,43 +183,103 @@ body {
   gap: 1rem;
 }
 
+.social-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .social-icons img {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-/* For showing the popup */
-.active {
+/* Active class */
+.share-popup.active {
   display: flex;
 }
-
-/* Media queries for responsiveness */
-@media screen and (max-width: 768px) {
+/* Mobile styles */
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
-    height: auto;
+    overflow: hidden;
   }
-  
+
   #image-container {
-    flex: 0 0 200px;
-  }
-  
-  .share-popup {
     width: 100%;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
-    padding: 1rem;
-    justify-content: space-between;
+    height: 200px;
   }
-  
+
+  #text-container {
+    padding: 2rem;
+    position: relative;
+  }
+
+  .author-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  .share-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .share-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+    justify-content: flex-start; 
+    gap: 1rem;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .share-popup.active {
+    display: flex;
+  }
+
+  /* Social share content */
+  .share-popup .social-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Share button styling */
+  .share-button {
+    position: relative;
+    z-index: 20;
+    margin-left: auto; 
+  }
+
+  .share-button.active {
+    background-color: hsl(214, 17%, 51%);
+  }
+
+  .share-button.active img {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Hide author info when share is active */
+  .author-info.hidden {
+    display: none;
+  }
+
+  /* Remove popup arrow on mobile */
   .share-popup::after {
     display: none;
   }
 }
-
-@media screen and (max-width: 375px) {
-  #text-container {
-    padding: 1.5rem 1.5rem 1rem;
-  }
+.hidden {
+  display: none;
 }
